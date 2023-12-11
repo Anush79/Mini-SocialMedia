@@ -208,10 +208,23 @@ button.flex{
   .utility{
     width: 100vw;
   }
-  
+  .header{
+    display: flex;
+    position: static;
+    flex-direction: column;
+  }
+  .header button{
+    position: static;
+    width: fit-content;
+  }
 input,
 select,
 textarea{
+  min-width: 280px;
   max-width: fit-content;
+}
+select{
+  min-width: fit-content;
+  padding:0;
 }
 }

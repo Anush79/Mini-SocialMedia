@@ -7,19 +7,8 @@ import Modal from "@mui/material/Modal";
 import NewForm from "../components/NewPostForm";
 import { ArrowBack, DeleteForeverOutlined, Edit, Error } from "@mui/icons-material";
 import actionTypes from "../constants/action";
-
+import style from "../constants/styleModal";
 const { DELETE_POST } = actionTypes;
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  borderRadius: "5px",
-  boxShadow: 24,
-  p: 4,
-};
 
 export default function PostDetails() {
   const { postId } = useParams();
