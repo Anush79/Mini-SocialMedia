@@ -1,0 +1,12 @@
+const actionTypes = {
+  ADD: "ADD",
+  LIKE:'LIKE',
+  DISLIKE:'DISLIKE',
+  NEW_POST:'NEW_POST',
+  DELETE_POST:'DELETE_POST',
+  EDIT_POST:'EDIT_POST',
+  ADD_TO_FAVORITE: 'ADD_TO_FAVORITE',
+  REMOVE_FROM_FAVORITE: 'REMOVE_FROM_FAVORITE'
+}
+
+export default actionTypes 
