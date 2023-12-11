@@ -12,7 +12,7 @@ export default function Header({handleOpen}) {
     </div>
     <div className="flex">
       <span onClick={handleOpen} className="userProfile pointer">
-        <img src="/user-avatar.png" alt="user profile pic"  aria-label="user porifile pic"/>
+        <img src="/user-avatar.png" alt="user profile pic"  aria-label="user profile pic"/>
         
       </span>
      User {user}

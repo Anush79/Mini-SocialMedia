@@ -148,7 +148,7 @@ form {
   width: 100ch;
 }
 .header h2{
-  padding: auto 3rem;
+  padding: 0 2rem;
 }
 .header button {
   position: absolute;
@@ -217,6 +217,11 @@ button.flex{
     position: static;
     width: fit-content;
   }
+  header{
+    margin:auto 0;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
 input,
 select,
 textarea{
@@ -226,5 +231,8 @@ textarea{
 select{
   min-width: fit-content;
   padding:0;
+}
+.hidden{
+  display: hidden;
 }
 }

@@ -8,6 +8,7 @@ import NewForm from "../components/NewPostForm";
 import { ArrowBack, DeleteForeverOutlined, Edit, Error } from "@mui/icons-material";
 import actionTypes from "../constants/action";
 import style from "../constants/styleModal";
+import {toast} from 'react-toastify'
 const { DELETE_POST } = actionTypes;
 
 export default function PostDetails() {
@@ -64,8 +65,10 @@ export default function PostDetails() {
   };
 
   const handleDelete = (id) => {
-    if(userPost)
+    if(userPost){
     dispatch({ type: DELETE_POST, payload: id });
+  toast.success('Post Deleted Successfully')
+  }
   else deletePost(id)
     navigate(-1);
   };
@@ -77,7 +80,7 @@ export default function PostDetails() {
   }, [userPost]);
   return (
     <div className="page">
-      {loading && <div className="loader"></div>}
+      
       <div className="header">
         <button onClick={() => navigate(-1)}>
           <ArrowBack />
@@ -88,7 +91,7 @@ export default function PostDetails() {
       {
         !postData.post.id &&  <h2 className="error"><Error/> <p>No Data Found </p> </h2>
       }
-   
+   {loading && <div className="loader"></div>}
       <p>{postData?.post?.body}</p>
       <div className="flex">
       {(userPost || postData.post.userId === Number(user)) && (
