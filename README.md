@@ -1,5 +1,7 @@
 # Mini Social Media
 
+[Live Link](https://socialmediabyanushka.netlify.app/)
+
 Welcome to Mini Social Media, a simple web application that allows users to explore, interact with, and manage posts. This application is built using React and fetches data from the [JSONPlaceholder](https://jsonplaceholder.typicode.com/) API. Below, you'll find an overview of the features and instructions on running the application.
 
 ## Features
