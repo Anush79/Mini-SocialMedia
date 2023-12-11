@@ -24,6 +24,7 @@ textarea {
   border-radius: 5px;
   min-width: 15rem;
   font: inherit;
+  margin:auto 2px;
 }
 select{
   min-width: 10rem;
@@ -98,6 +99,10 @@ header img {
   flex-wrap: wrap;
   gap: 1rem;
   text-align: left;
+  white-space: wrap; 
+  overflow: auto;
+  word-wrap: break-word;
+  text-overflow: ellipsis; 
 }
 
 .post-container img {

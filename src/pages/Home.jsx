@@ -1,55 +1,80 @@
 import { useEffect, useState } from "react";
 import PostBox from "../components/PostBox";
 import { usePosts } from "../context/postContext";
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
 import NewForm from "../components/NewPostForm";
 import style from "../constants/styleModal";
-import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
+import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
 import { Edit } from "@mui/icons-material";
 
 export default function Home() {
   const { posts, status } = usePosts();
-  const [postsToDisplay, setPostsToDisplay] = useState([...posts?.userPosts, ...posts?.allPosts])
-  const [filter, setFilter] = useState('')
+  const [postsToDisplay, setPostsToDisplay] = useState([
+    ...posts?.userPosts,
+    ...posts?.allPosts,
+  ]);
+  const [filter, setFilter] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   function filterPosts(e) {
-    setFilter(e.target.value)
+    setFilter(e.target.value);
   }
-  useEffect(()=>{
-   
+  useEffect(() => {
     switch (filter) {
-     
+      case "SEARCH":
+       
+        break;
       case "FAVORITES":
         setPostsToDisplay(posts?.favoritePosts);
         break;
       case "LIKED":
-        setPostsToDisplay(posts?.likedPosts)
+        setPostsToDisplay(posts?.likedPosts);
         break;
       default:
-        setPostsToDisplay([...posts?.userPosts, ...posts?.allPosts])
+        setPostsToDisplay([...posts?.userPosts, ...posts?.allPosts]);
     }
-  },[filter, posts])
-  useEffect(() => {
+  }, [filter, posts]);
+
+  const filteredPosts = searchInput.length >0 ? postsToDisplay?.filter(
+      (item) =>
+        item.userId === Number(searchInput) ||
+        item.title.toLowerCase().includes(searchInput) ||
+        item.body.toLowerCase().includes(searchInput)
+    ) : postsToDisplay
   
-    setPostsToDisplay([...posts?.userPosts, ...posts?.allPosts])
-  }, [posts.allPosts, posts.userPosts])
+  useEffect(() => {
+    setPostsToDisplay([...posts?.userPosts, ...posts?.allPosts]);
+    setFilter('ALL')
+  }, [posts.allPosts, posts.userPosts]);
   return (
     <div className="page">
       <div className="utility">
-         <button className="flex" onClick={handleOpen}><Edit/> {' '}  New Post</button>
+        <button className="flex" onClick={handleOpen}>
+          <Edit /> New{" "}
+        </button>
+       <div className="flex">
 
-      <select name="filter" onChange={filterPosts} id="">
-        <option value="ALL">All</option>
-        <option value="LIKED">Liked</option>
-        <option value="FAVORITES">Favorites</option>
-      </select>
+       <input
+          type="text "
+          placeholder="Search for title, body or userId "
+          aria-label="search for something"
+          onChange={(e) => {
+            setSearchInput(e.target.value.toLowerCase());
+          }}
+        />
+        <select name="filter" onChange={filterPosts} value={filter} id="">
 
+          <option value="ALL">All</option>
+          <option value="LIKED">Liked</option>
+          <option value="FAVORITES">Favorites</option>
+        </select>
+       </div>
       </div>
-     
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -61,20 +86,19 @@ export default function Home() {
         </Box>
       </Modal>
 
-
       {status.loading && <div className="loader"></div>}
       <div className="allPost-container flex">
-        {postsToDisplay.length ? postsToDisplay?.map((item) => (
-          <PostBox key={item.id} post={item} />
-        )) :
+        {filteredPosts.length ? (
+          filteredPosts?.map((item) => <PostBox key={item.id} post={item} />)
+        ) : (
           <div>
             <div className="error">
-               <ReportGmailerrorredIcon/>
+              <ReportGmailerrorredIcon />
             </div>
-           
-            <br/>
-            No Posts to display</div>
-        }
+            <br />
+            No Posts to display
+          </div>
+        )}
       </div>
     </div>
   );
