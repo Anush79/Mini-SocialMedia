@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { usePosts } from "../context/postContext";
-import actionTypes from "../constants/action";
 
-const {
-  EDIT_POST,
-} = actionTypes;
+
 export default function NewForm({ closeFunc, toEditData }) {
-  const { addNewPost, dispatch, editPost , user} = usePosts();
+  const { addNewPost, editPost , user} = usePosts();
   const [postBody, setBody] = useState(
     toEditData ?? {
       id:'',
