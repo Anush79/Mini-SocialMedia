@@ -1,4 +1,3 @@
-import { GitHub } from "@mui/icons-material";
 import { usePosts } from "../context/postContext";
 import { useNavigate } from "react-router-dom";
 
