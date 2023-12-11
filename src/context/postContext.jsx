@@ -148,8 +148,7 @@ export default function PostProvider({ children }) {
       );
       const newData = await response.json();
       dispatch({ type: EDIT_POST, payload: newData });
-      toast.success('Post Edited Successfully but it is not visible here because updated version is not saved in any database, Go back to see the updated post ')
-
+      toast.success('Post Edited Successfully but it is not visible here because updated version is not saved in any database, To view the updated post, kindly navigate back to the Home page. ')
      }
      else {
       dispatch({ type: EDIT_POST, payload: editedPostData });
