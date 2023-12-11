@@ -6,7 +6,7 @@ import Modal from "@mui/material/Modal";
 import NewForm from "../components/NewPostForm";
 import style from "../constants/styleModal";
 import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
-import { Edit } from "@mui/icons-material";
+import { Cancel, Edit } from "@mui/icons-material";
 
 export default function Home() {
   const { posts, status } = usePosts();
@@ -60,6 +60,7 @@ export default function Home() {
 
        <input
           type="text "
+          value={searchInput}
           placeholder="Search for title, body or userId "
           aria-label="search for something"
           onChange={(e) => {
@@ -72,6 +73,9 @@ export default function Home() {
           <option value="LIKED">Liked</option>
           <option value="FAVORITES">Favorites</option>
         </select>
+        <span className="pointer" onClick={()=>{setFilter('ALL'); setSearchInput('')}}>
+          <Cancel title="Clear filter and search" />
+        </span>
        </div>
       </div>
 
