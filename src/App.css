@@ -85,6 +85,7 @@ header img {
   top: calc( 35px + 1.5rem );
   background-color: #fff;
 }
+
 .post-container {
   margin: auto;
   display: flex;
@@ -206,12 +207,20 @@ button.flex{
     width: 95vw;
     margin:auto
   }
+  button{
+    width:fit-content;
+    height: fit-content;
+  }
   form{
     max-width: 100%;
 
   }
   .utility{
     width: 100vw;
+  }
+  .utility .flex{
+  flex-wrap: wrap;
+  flex-direction: column;
   }
   .header{
     display: flex;
@@ -230,7 +239,7 @@ button.flex{
 input,
 select,
 textarea{
-  min-width: 280px;
+  min-width: 100px;
   max-width: fit-content;
 }
 select{
